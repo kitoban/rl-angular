@@ -1,0 +1,22 @@
+{
+  "name": "rl-angular",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kitoban/rl-angular.git"
+  },
+  "author": "Kitoban",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/kitoban/rl-angular/issues"
+  },
+  "homepage": "https://github.com/kitoban/rl-angular#readme",
+  "devDependencies": {
+    "eslint-plugin-react": "^4.3.0"
+  }
+}
