@@ -1,16 +1,15 @@
 (function(angular) {
   'use strict';
-function HeroDetailController() {
-
-}
-
-angular.module('heroApp').component('heroDetail', {
-  templateUrl: 'heroDetail.html',
-  controller: HeroDetailController,
-  bindings: {
-    hero: '='
+  function HeroDetailController() {
+    this.hero = {
+      name: 'IronMan'
+    };
   }
-});
+
+  angular.module('heroApp').component('heroDetail', {
+    templateUrl: 'heroDetail.html',
+    controller: HeroDetailController
+  });
 })(window.angular);
 
 /*
