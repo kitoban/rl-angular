@@ -1,18 +1,29 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-	<title>Tour of Heros ES5</title>
+  <meta charset="UTF-8">
+  <title>Example - example-heroComponentSimple-production</title>
 
-<!-- <script type='text/javascript' src ='https://code.angularjs.org/2.0.0-alpha.44/angular2.sfx.dev.js'></script> -->
-<script type='text/javascript' src ='lib/angular2.sfx.dev.js'></script>
-<script type='text/javascript' src='src/hero.service.js'></script>
-<script type='text/javascript' src='src/dashboard.component.js'></script>
 
-<script type='text/javascript' src='src/app.component.js'></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+  <script src="index.js"></script>
+  <script src="heroDetail.js"></script>
+
 
 
 </head>
-<body>
-<my-app></my-app>
+<body ng-app="heroApp">
+  <!-- components match only elements -->
+<div ng-controller="mainCtrl as ctrl">
+  <b>Hero</b><br>
+	{{1+1}}<br>
+  <hero-detail hero="ctrl.hero"></hero-detail>
+</div>
 </body>
 </html>
+
+<!--
+Copyright 2016 Google Inc. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+-->
