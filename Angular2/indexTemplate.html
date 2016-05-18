@@ -1,0 +1,11 @@
+<div>
+  <nav>
+    <a ng-link="['HeroDetail']">Hero Detail</a>
+    <a ng-link="['RealDetail']">Real Detail</a>
+  </nav>
+  <ng-outlet></ng-outlet>
+
+  <ul>
+    <li ng-repeat="item in $ctrl.menu.items"><a href="{{ item.url }}">{{ item.title }}</a></li>
+  </ul>
+</div>

@@ -2,22 +2,21 @@
   'use strict';
   angular.module('kitApp', ['ngComponentRouter'])
 
-  .config(function($locationProvider) {
+  .config( function( $locationProvider ) {
     $locationProvider.html5Mode(true);
   })
   .value('$routerRootComponent', 'app')
   .component('app', {
-    template:
-      '<nav>\n' +
-      '  <a ng-link="[\'HeroDetail\']">Hero Detail</a>\n' +
-      '  <a ng-link="[\'RealDetail\']">Real Detail</a>\n' +
-      '</nav>\n' +
-      '<ng-outlet></ng-outlet>\n',
+    templateUrl: 'indexTemplate.html',
     $routeConfig: [
-      {path: '/hero-detail/', name: 'HeroDetail', component: 'heroDetail', useAsDefault: true},
+      {path: '/', name: 'HeroDetail', component: 'heroDetail', useAsDefault: true},
       {path: '/real-detail/', name: 'RealDetail', component: 'realDetail' }
-    ]
+    ],
+    controller: BaseController
   });
 
+  function BaseController( MenuService ) {
+    this.menu = MenuService.getMenu();
+  }
 
 })(window.angular);
