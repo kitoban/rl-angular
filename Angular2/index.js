@@ -1,6 +1,6 @@
 (function(angular) {
   'use strict';
-  angular.module('kitApp', ['ngComponentRouter'])
+  angular.module('kitApp', ['ngComponentRouter', 'ngResource'])
 
   .config( function( $locationProvider ) {
     $locationProvider.html5Mode(true);
@@ -15,8 +15,19 @@
     controller: BaseController
   });
 
-  function BaseController( MenuService ) {
+  function BaseController( MenuService, PageService, $sce ) {
     this.menu = MenuService.getMenu();
+    this.selectedUrl = '';
+    this.page = '';
+
+    this.getPage = function( page ) {
+      var pageUrl = 'http://test.rlsas.co.uk/wp-json/wp/v2/pages/' + page.object_id;
+      this.selectedUrl = pageUrl;
+
+      PageService.get( { object_id: page.object_id }, ( ret ) => {
+        this.page = $sce.trustAsHtml( ret.content.rendered );
+      } );
+    };
   }
 
 })(window.angular);
