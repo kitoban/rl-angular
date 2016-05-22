@@ -1,9 +1,20 @@
 (function(angular) {
   'use strict';
-  angular.module('kitApp', ['ngComponentRouter', 'ngResource'])
+  var app = angular.module('kitApp', ['ngComponentRouter', 'ngResource'])
 
-  .config( function( $locationProvider ) {
+  app.config( function( $routeProvider, $controllerProvider, $compileProvider, $filterProvider, $provide, $locationProvider
+  //  , $componentProvider
+  ) {
     $locationProvider.html5Mode(true);
+
+    app.controllerProvider = $controllerProvider;
+    //app.componentProvider = $componentProvider;
+    app.compileProvider    = $compileProvider;
+    app.routeProvider      = $routeProvider;
+    app.filterProvider     = $filterProvider;
+    app.provide            = $provide;
+    app.locationProvider   = $locationProvider;
+
   })
   .value('$routerRootComponent', 'app')
   .component('app', {
@@ -15,10 +26,33 @@
     controller: BaseController
   });
 
-  function BaseController( MenuService, PageService, $sce ) {
+  function BaseController( MenuService, PageService, $rootRouter ) {
     this.menu = MenuService.getMenu();
     this.selectedUrl = '';
     this.page = '';
+
+    this.testMenu = [];
+
+    this.testMenu.push('HeroDetail');
+    this.testMenu.push('RealDetail');
+
+
+    function LazyHeroDetailController() {
+      this.hero = {
+        name: 'Robert'
+      };
+    }
+
+    app.compileProvider.component('lazyHero', {
+      templateUrl: 'lazyHero.html',
+      controller: LazyHeroDetailController
+    });
+
+    $rootRouter.registry.config('app', {path: '/lazy-hero/', name: 'LazyHero', component: 'lazyHero' } );
+
+    this.testMenu.push('LazyHero');
+
+
 
     this.getPage = function( page ) {
       var pageUrl = 'http://test.rlsas.co.uk/wp-json/wp/v2/pages/' + page.object_id;

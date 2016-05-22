@@ -3,12 +3,21 @@
     <a ng-link="['HeroDetail']">Hero Detail</a>
     <a ng-link="['RealDetail']">Real Detail</a>
   </nav>
+  <hr/>
+  <ul>
+    <li ng-repeat="item in $ctrl.testMenu">
+      <a ng-link="['{{item}}']">{{ item }}</a>
+    </li>
+  </ul>
+  <hr/>
   <ng-outlet></ng-outlet>
 </div>
 <hr/>
 <div>
   <ul>
-    <li ng-repeat="item in $ctrl.menu.items"><a href="#" ng-click="$ctrl.getPage( item )">{{ item.title }}</a></li>
+    <li ng-repeat="item in $ctrl.menu.items">
+      <a href="#" ng-click="$ctrl.getPage( item )">{{ item.title }}</a>
+    </li>
   </ul>
   selectedUrl: {{ $ctrl.selectedUrl }}
   <hr/>
