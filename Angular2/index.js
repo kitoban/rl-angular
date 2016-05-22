@@ -25,8 +25,11 @@
       this.selectedUrl = pageUrl;
 
       PageService.get( { object_id: page.object_id }, ( ret ) => {
-        this.page = $sce.trustAsHtml( ret.content.rendered );
+        this.page = ret.content.rendered;
       } );
+
+      this.page = '<img src="loading_icon.gif" alt="Loading..." />';
+
     };
   }
 

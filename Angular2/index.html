@@ -14,9 +14,14 @@
   <script src="lib/angular.js"></script>
   <script src="lib/angular_1_router.js"></script>
   <script src="lib/angular-resource.js"></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js"></script>
 
   <script src="index.js"></script>
+
+  <script src="directives\compileHtml.js"></script>
+  <script src="directives/table.js"></script>
+
+
   <script src="heroDetail.js"></script>
   <script src="realDetail.js"></script>
   <script src="menuService.js"></script>
@@ -32,7 +37,15 @@
 <body ng-app="kitApp">
   <!-- components match only elements -->
 	<div>
-		{{1+1}}<br>
+    <!-- <table>
+      <tr>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+      </tr>
+    </table>
+    <hr/> -->
+
 		<app></app>
 	</div>
 </body>

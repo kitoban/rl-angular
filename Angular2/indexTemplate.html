@@ -5,11 +5,13 @@
   </nav>
   <ng-outlet></ng-outlet>
 </div>
+<hr/>
 <div>
   <ul>
     <li ng-repeat="item in $ctrl.menu.items"><a href="#" ng-click="$ctrl.getPage( item )">{{ item.title }}</a></li>
   </ul>
   selectedUrl: {{ $ctrl.selectedUrl }}
-  <div ng-bind-html="$ctrl.page"></div>
+  <hr/>
+  <div compile-html="$ctrl.page"></div>
 
 </div>
