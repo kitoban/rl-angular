@@ -15,8 +15,8 @@
 <hr/>
 <div>
   <ul>
-    <li ng-repeat="item in $ctrl.menu.items">
-      <a href="#" ng-click="$ctrl.getPage( item )">{{ item.title }}</a>
+    <li ng-repeat="item in $ctrl.menu">
+      <a ng-link="['{{item.ref}}']">{{ item.title }}</a>
     </li>
   </ul>
   selectedUrl: {{ $ctrl.selectedUrl }}

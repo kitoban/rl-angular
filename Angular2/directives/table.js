@@ -68,10 +68,10 @@
           } );
         }
 
-        return { post: postLink }
+        return { post: postLink };
       },
-      template: '<div></div>' // ng-transclude
-    }
+      template: '<div></div>'
+    };
   } );
 
 })( window.angular, window._ );
