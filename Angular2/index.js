@@ -23,12 +23,11 @@
     controller: BaseController
   } );
 
-  function BaseController( MenuService, PageService, $rootRouter, $rootScope, $timeout, $location ) {
+  function BaseController( MenuService, PageService, $rootRouter, $rootScope, $timeout ) {
     this.menu = [];
     this.testMenu = [];
 
     MenuService.get( {}, ( menu ) => {
-
 
       /*
       $timeout( () => {
@@ -54,7 +53,7 @@
         $rootRouter.navigateByInstruction(instruction);
       } );
 */
-      app.$siteData = {};
+      $rootScope.$siteData = {};
 
       function getPageSlug( url ) {
         var baseUrlRegex = /^.+?[^\/:](?=[?\/]|$)\//g;
@@ -96,10 +95,10 @@
       }
 
       _.forEach( menu.items, ( item ) => {
-        addMenuItemToParent( app.$siteData, item );
+        addMenuItemToParent( $rootScope.$siteData, item );
       } );
 
-      buildPages( app.$siteData, this.menu, '' );
+      buildPages( $rootScope.$siteData, this.menu, '' );
 
       function buildPages( refObj, menu, currentPath ) {
         _.forEach( refObj.orderedRef, ( menuItem ) => {
@@ -115,15 +114,17 @@
       //console.log("ngModel:", "ngModel".replace(/[A-Z]/g, denormalize));
 
       function buildPage( ref, title, currentPath ) {
+
         var name = ref.replace( /-[a-z]/g, normalize );
         name = name[0].toUpperCase() + name.slice( 1, name.length );
 
-        app._compileProvider.component( ref, {
-          templateUrl: 'pageDisplay.html',
+        /*app._compileProvider.component( ref, {
+          //templateUrl: 'pageDisplay.html',
+          template: 'abc',
           controller: PageDisplayController
-        } );
+        } );*/
 
-        var routeObj = { path: currentPath + '/' + ref + '/', name: name, component: name };
+        var routeObj = { path: currentPath + '/' + ref + '/', name: name, component: 'pageDisplay' };
         console.log( routeObj );
         $rootRouter.registry.config( 'app', routeObj );
 
@@ -136,13 +137,13 @@
 
     } );
 
-    function PageDisplayController( $location ) {
+    /*function PageDisplayController( $location ) {
       this.page = '<img src="loading_icon.gif" alt="Loading..." />';
       console.log( $location.path() );
       /*PageService.get( { object_id: item.object_id }, ( ret ) => {
         this.page = ret.content.rendered;
       } );*/
-    }
+    //}
 
 
     this.selectedUrl = '';
