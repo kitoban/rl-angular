@@ -115,15 +115,15 @@
       //console.log("ngModel:", "ngModel".replace(/[A-Z]/g, denormalize));
 
       function buildPage( ref, title, currentPath ) {
+        var name = ref.replace( /-[a-z]/g, normalize );
+        name = name[0].toUpperCase() + name.slice( 1, name.length );
+
         app._compileProvider.component( ref, {
           templateUrl: 'pageDisplay.html',
           controller: PageDisplayController
         } );
 
-        var name = ref.replace( /-[a-z]/g, normalize );
-        name = name[0].toUpperCase() + name.slice( 1, name.length );
-
-        var routeObj = { path: currentPath + '/' + ref + '/', name: name, component: ref };
+        var routeObj = { path: currentPath + '/' + ref + '/', name: name, component: name };
         console.log( routeObj );
         $rootRouter.registry.config( 'app', routeObj );
 
