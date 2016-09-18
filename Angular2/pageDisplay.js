@@ -5,16 +5,6 @@
     var ctrl = this;
     ctrl.page = '<img src="loading_icon.gif" alt="Loading..." />';
 
-    // var path = $location.path();
-    // var splitPath = path.substring( 1, path.length ).split( '/' );
-    // var item = $rootScope.$siteData[splitPath[0]];
-    // console.log( 'PageDisplayController' );
-    // console.log( item );
-
-    // PageService.get( { object_id: item.object_id }, ( ret ) => {
-    //   this.page = ret.content.rendered;
-    // } );
-
     $scope.$watch(
       function() {
         return $location.path();
