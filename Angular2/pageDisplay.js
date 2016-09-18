@@ -21,8 +21,12 @@
       },
       function( newPath ) {
         ctrl.page = '<img src="loading_icon.gif" alt="Loading..." />';
-        var splitPath = newPath.substring( 1, newPath.length ).split( '/' );
-        var item = $rootScope.$siteData[splitPath[0]];
+        var item = $rootScope.$siteData.index[newPath];
+
+        if ( !item ) {
+          item = $rootScope.$siteData.index[newPath.slice( 0, newPath.length-1 )];
+        }
+
         console.log( 'location update' );
         console.log( item );
 
@@ -37,7 +41,7 @@
   }
 
   angular.module( 'kitApp' ).component( 'pageDisplay', {
-    templateUrl: 'pageDisplay.html',
+    templateUrl: '/pageDisplay.html',
     controller: PageDisplayController
   } );
 } )( window.angular );

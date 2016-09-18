@@ -7,7 +7,7 @@
   }
 
   angular.module('kitApp').component('heroDetail', {
-    templateUrl: 'heroDetail.html',
+    templateUrl: '/heroDetail.html',
     controller: HeroDetailController
   });
 })(window.angular);

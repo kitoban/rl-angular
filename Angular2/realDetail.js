@@ -7,7 +7,7 @@
   }
 
   angular.module('kitApp').component('realDetail', {
-    templateUrl: 'realDetail.html',
+    templateUrl: '/realDetail.html',
     controller: RealDetailController
     /*bindings: {
       hero: '='
